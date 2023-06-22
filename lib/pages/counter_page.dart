@@ -1,4 +1,6 @@
+import 'package:counter_project/providers/counter_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../controllers/counter_controller.dart';
 
 class CounterPage extends StatefulWidget {
@@ -11,7 +13,6 @@ class CounterPage extends StatefulWidget {
 }
 
 class _CounterPageState extends State<CounterPage> {
-
   final CounterController _con = CounterController();
 
   @override
@@ -38,16 +39,18 @@ class _CounterPageState extends State<CounterPage> {
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
           FloatingActionButton(
-            onPressed: (){
+            onPressed: () {
               setState(_con.increment);
+              Provider.of<CounterProvider>(context, listen: false).update(_con.count);
             },
             tooltip: 'Increment',
             child: const Icon(Icons.add),
           ),
           const SizedBox(height: 10),
           FloatingActionButton(
-            onPressed: (){
+            onPressed: () {
               setState(_con.decrement);
+              Provider.of<CounterProvider>(context, listen: false).update(_con.count);
             },
             tooltip: 'Increment',
             child: const Icon(Icons.remove),

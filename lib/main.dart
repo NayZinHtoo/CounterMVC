@@ -14,7 +14,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [ChangeNotifierProvider.value(value: CounterProvider())],
-      child: MaterialApp(
+      child: Consumer<CounterProvider>(
+        builder: (ctx,counter,_)=>
+        MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Counter Demo',
           theme: ThemeData(
@@ -23,6 +25,7 @@ class MyApp extends StatelessWidget {
           home: const MyHomePage(
           title: 'Home Page',
         )),
+      ) 
     );
   }
 }

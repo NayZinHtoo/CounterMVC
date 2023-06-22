@@ -7,11 +7,11 @@ class CounterController extends CounterProvider {
 
   void decrement() {
     CounterModel.decrementCounter();
-    update();
+    update(CounterModel.counter);
   }
 
   void increment() {
     CounterModel.incrementCounter();
-    update();
+    update(CounterModel.counter);
   }
 }

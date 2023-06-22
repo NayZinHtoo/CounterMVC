@@ -2,8 +2,13 @@ import 'package:flutter/cupertino.dart';
 import '../models/counter.dart';
 
 class CounterProvider extends ChangeNotifier {
-  
-  void update() => notifyListeners();
+  int _count = 0;
+  //void update() => notifyListeners();
 
-  int get count => CounterModel.counter;
+  void update(int count) {
+    _count = count;
+    notifyListeners();
+  }
+
+  int get count => _count;
 }
