@@ -1,4 +1,4 @@
-import '../models/counter_model.dart';
+import '../models/counter.dart';
 
 class CounterController {
   int get count => CounterModel.counter;

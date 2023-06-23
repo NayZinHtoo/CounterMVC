@@ -12,7 +12,7 @@ class CounterProvider extends ChangeNotifier {
   }
 
   void decrement() {
-    controller.increment();
+    controller.decrement();
     _count = controller.count;
     notifyListeners();
   }
