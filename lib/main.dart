@@ -13,19 +13,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [ChangeNotifierProvider.value(value: CounterProvider())],
-      child: Consumer<CounterProvider>(
-        builder: (ctx,counter,_)=>
-        MaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: 'Counter Demo',
-          theme: ThemeData(
-            primarySwatch: Colors.blue,
-          ),
-          home: const MyHomePage(
-          title: 'Home Page',
-        )),
-      ) 
-    );
+        providers: [ChangeNotifierProvider.value(value: CounterProvider())],
+        child: MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'Counter Demo',
+            theme: ThemeData(
+              primarySwatch: Colors.blue,
+            ),
+            home: const MyHomePage(
+              title: 'Home Page',
+            )));
   }
 }

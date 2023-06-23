@@ -1,17 +1,13 @@
-import '../providers/counter_provider.dart';
-import '../models/counter.dart';
+import '../models/counter_model.dart';
 
-class CounterController extends CounterProvider {
-
-  int get count =>CounterModel.counter;
+class CounterController {
+  int get count => CounterModel.counter;
 
   void decrement() {
     CounterModel.decrementCounter();
-    update(CounterModel.counter);
   }
 
   void increment() {
     CounterModel.incrementCounter();
-    update(CounterModel.counter);
   }
 }

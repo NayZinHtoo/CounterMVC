@@ -1,12 +1,19 @@
+import 'package:counter_project/controllers/counter_controller.dart';
 import 'package:flutter/cupertino.dart';
-import '../models/counter.dart';
 
 class CounterProvider extends ChangeNotifier {
   int _count = 0;
-  //void update() => notifyListeners();
+  CounterController controller = CounterController();
 
-  void update(int count) {
-    _count = count;
+  void increment() {
+    controller.increment();
+    _count = controller.count;
+    notifyListeners();
+  }
+
+  void decrement() {
+    controller.increment();
+    _count = controller.count;
     notifyListeners();
   }
 

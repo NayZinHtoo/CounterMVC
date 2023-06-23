@@ -1,5 +1,4 @@
 class CounterModel {
-  
   static int _counter = 0;
   static int get counter => _counter;
 

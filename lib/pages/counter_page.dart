@@ -1,7 +1,6 @@
 import 'package:counter_project/providers/counter_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../controllers/counter_controller.dart';
 
 class CounterPage extends StatefulWidget {
   const CounterPage({super.key, required this.title});
@@ -13,10 +12,10 @@ class CounterPage extends StatefulWidget {
 }
 
 class _CounterPageState extends State<CounterPage> {
-  final CounterController _con = CounterController();
-
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<CounterProvider>(context, listen: false);
+
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
@@ -28,10 +27,12 @@ class _CounterPageState extends State<CounterPage> {
             const Text(
               'You have pushed the button this many times:',
             ),
-            Text(
-              '${_con.count}',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
+            Consumer<CounterProvider>(builder: (context, provider, _) {
+              return Text(
+                '${provider.count}',
+                style: Theme.of(context).textTheme.headlineMedium,
+              );
+            }),
           ],
         ),
       ),
@@ -40,8 +41,7 @@ class _CounterPageState extends State<CounterPage> {
         children: <Widget>[
           FloatingActionButton(
             onPressed: () {
-              setState(_con.increment);
-              Provider.of<CounterProvider>(context, listen: false).update(_con.count);
+              provider.increment();
             },
             tooltip: 'Increment',
             child: const Icon(Icons.add),
@@ -49,10 +49,9 @@ class _CounterPageState extends State<CounterPage> {
           const SizedBox(height: 10),
           FloatingActionButton(
             onPressed: () {
-              setState(_con.decrement);
-              Provider.of<CounterProvider>(context, listen: false).update(_con.count);
+              provider.decrement();
             },
-            tooltip: 'Increment',
+            tooltip: 'Dncrement',
             child: const Icon(Icons.remove),
           )
         ],
